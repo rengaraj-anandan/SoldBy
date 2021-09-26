@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Rengaraj
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="adminhtml_sales_order_create_process_data">
+        <observer name="update_new_section_params" instance="RengaCodz\SoldBy\Observer\Order"/>
+    </event>
+    <event name="sales_model_service_quote_submit_before">
+        <observer name="rengacodz_soldby_sales_model_service_quote_submit_before" instance="RengaCodz\SoldBy\Observer\SaveOrderBeforeSalesModelQuoteObserver" />
+    </event>
+</config>

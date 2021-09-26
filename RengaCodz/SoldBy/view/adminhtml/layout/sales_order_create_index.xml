@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Rengaraj
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="data">
+            <block class="Magento\Sales\Block\Adminhtml\Order\Create\Form\Account" template="RengaCodz_SoldBy::order/create/form/account.phtml" name="form_account">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">RengaCodz\SoldBy\ViewModel\SalesAgent\Listing\PrepareData</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

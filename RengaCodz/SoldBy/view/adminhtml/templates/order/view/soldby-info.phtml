@@ -1,0 +1,34 @@
+<?php
+/**
+ * @author Rengaraj
+ */
+$soldbyinfo = $block->getSoldByInfo();
+if (!empty($soldbyinfo) && !empty($soldbyinfo->getId()))
+{
+    ?>
+    <section class="admin__page-section order-view-soldby-information">
+        <div class="admin__page-section-title">
+            <span class="title">Sales Person Informattion</span>
+        </div>
+        <div class="admin__page-section-item-content">
+            <table class="admin__table-secondary soldby-information-table">
+                <tbody>
+                    <tr>
+                        <th><b>Name</b></th>
+                        <td><?= $soldbyinfo->getName() ?></td>
+                    </tr>
+                    <tr>
+                        <th><b>Employee ID</b></th>
+                        <td><?= $soldbyinfo->getEmployeeId() ?></td>
+                    </tr>
+                    <tr>
+                        <th><b>Email</b></th>
+                        <td><?= $soldbyinfo->getEmail() ?></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <?php
+}
+?>

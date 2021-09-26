@@ -1,0 +1,53 @@
+<?php
+/**
+ * @author Rengaraj
+ */
+
+/**
+ * @var $block \Magento\Sales\Block\Adminhtml\Order\Create\Form\Account
+ * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
+ */
+?>
+
+<div class="admin__page-section-title <?= $block->escapeHtmlAttr($block->getHeaderCssClass()) ?>">
+    <span class="title"><?= $block->escapeHtml($block->getHeaderText()) ?></span>
+    <div class="actions"></div>
+</div>
+<div id="customer_account_fields" class="admin__page-section-content">
+    <?= $block->getForm()->getHtml() ?>
+</div>
+<?php $scriptString = <<<script
+    require(["prototype", "Magento_Sales/order/create/form"], function(){
+        order.accountFieldsBind($('customer_account_fields'));
+    });
+script;
+?>
+<?= /* @noEscape */ $secureRenderer->renderTag('script', [], $scriptString, false) ?>
+
+</section> 
+<?php
+/** @var $viewModel /RengaCodz/SoldBy/ViewModel/SalesAgent/Listing/PrepareData */
+$viewModel = $block->getViewModel();
+$data = $viewModel->getData();
+?>
+<section id="order-customblock" class="admin__page-section order-customblock">
+    <div class="admin__page-section-title head-account">
+        <span class="title">Sales Person Information</span>
+    </div>
+    <div class="admin__field field field-group_id  required _required" data-ui-id="order-soldby">
+        <label class="label admin__field-label" for="group_id" data-ui-id="order-soldby">
+            <span>Sold By</span>
+        </label>
+        <div class="admin__field-control control">
+            <select id="group_id" name="order[account][soldby]" class="required-entry required-entry _required select admin__control-select" aria-required="true">
+                <option value="">Please select sales person</option>
+                <?php
+                    foreach ($data as $key=>$value) {
+                        ?>
+                        <option value="<?= $key ?>" id="<?= $value; ?>"><?= $value ;?></option>
+                        <?php
+                    }
+                ?>
+            </select>
+        </div>
+    </div>

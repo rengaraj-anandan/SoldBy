@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Rengaraj
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="RengaCodz\SoldBy\Model\ResourceModel\SalesPerson\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">sales_person</argument>
+            <argument name="resourceModel" xsi:type="string">RengaCodz\SoldBy\Model\ResourceModel\SalesPerson</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="sales_person_grid_data_source" xsi:type="string">RengaCodz\SoldBy\Model\ResourceModel\SalesPerson\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid" type="Magento\Sales\Model\ResourceModel\Grid">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="sold_by" xsi:type="string">sales_order.sold_by</item>
+            </argument>
+        </arguments>
+    </virtualType>
+</config>
